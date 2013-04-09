@@ -1,0 +1,116 @@
+.authboard {
+    float: left;
+    border-top: 1px solid #eeeeee;
+    padding-top: 10px;
+}
+
+.authboard .authboard-controls .btn {
+    margin-right: 10px;
+}
+.authboard .authboard-controls {
+    background: #eeeeee;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 20px;
+    text-align: center;
+    -webkit-box-shadow: 1px 1px 4px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow: 1px 1px 4px rgba(50, 50, 50, 0.25);
+    box-shadow: 1px 1px 4px rgba(50, 50, 50, 0.25);
+}
+
+#status {
+    position: fixed;
+    right: 290px;
+    top: 12px;
+    display: none;
+    z-index: 9999;
+}
+
+.swimlane {
+    float: left;
+    min-width: 150px;
+}
+
+.swimlane .person-name {
+    text-align: center;
+    margin: 8px 0;
+}
+
+/* Tickets containers */
+.tickets .background {
+    color: #aaaaaa;
+    font-size: 14px;
+    position: absolute;
+    text-align: center;
+    top: 10px;
+    left: 50%;
+    margin-left: -50%;
+    width: 100%;
+    z-index: -999;
+}
+
+.tickets > div {
+    border: 1px solid #dddddd;
+    margin: 0 6px 8px 6px;
+    padding-top: 30px;
+    min-height: 48px;
+    position: relative;
+}
+
+/* Individual tickets */
+.ticket {
+    background: #f1f1f1;
+    border: 1px solid #cccccc;
+    color: #343434;
+    font-size: 14px;
+    margin: 8px;
+    overflow: hidden;
+    -webkit-box-shadow: 1px 1px 4px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow: 1px 1px 4px rgba(50, 50, 50, 0.25);
+    box-shadow: 1px 1px 4px rgba(50, 50, 50, 0.25);
+}
+
+.ticket .ticket-details-inner {
+    margin: 12px;
+}
+.ticket h4 {
+    font-size: 17px;
+}
+.ticket .ticket-details-list {
+    display: none;
+}
+.ticket .ticket-summary a:link,
+.ticket .ticket-summary a:visited {
+    color: #343434;
+}
+.ticket .ticket-summary a:hover,
+.ticket .ticket-summary a:active {
+    color: #000000;
+    text-decoration: none;
+}
+
+.ticket.blue { background: #E7F0F5; }
+.ticket.red { background: #FFCCCF; }
+.ticket.teal { background: #C2FFFD; }
+.ticket.purple { background: #C7B8FF; }
+.ticket.orange { background: #FFF5E0; }
+.ticket.grey { background: #eeeeee; }
+.ticket.green { background: #D5FFC7; }
+
+#nav {
+    float: left;
+    margin: 0;
+    width: 100%;
+}
+#nav h1 {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 18px;
+}
+#nav p {
+    font-size: 12px;
+}

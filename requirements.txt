@@ -1,0 +1,3 @@
+Flask
+Jinja2
+-e git://github.com/rnagle/unfuddle-python.git#egg=unfuddle-python

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Swimlanes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" media="all" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css' ) }}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="{{ url_for('static', filename='bootstrap/css/bootstrap-responsive.css' ) }}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="{{ url_for('static', filename='style.css' ) }}"/>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div id="nav">
+        <h1>Swimlanes</h1>
+        <p><a target="_blank" href="https://{{ unfuddle_account }}.unfuddle.com/">Go to Unfuddle &raquo;</a></p>
+    </div>
+    <div id="container"></div>
+</div>
+
+<script type="text/template" id="ticket-details-template">
+    <div class="ticket-details">
+        <div class="ticket-details-inner">
+            <h4 class="ticket-summary">
+                <a target="_blank" href="https://{{ unfuddle_account }}.unfuddle.com/projects/<%= project_id %>/tickets/by_number/<%= ticket_number %>">#<%= ticket_number %>: <%= summary %></a>
+            </h4>
+            <ul class="unstyled ticket-details-list">
+                <li><strong>Project:</strong> <%= project %></li>
+                <li><strong>Estimate:</strong> <%= estimate %></li>
+                <li><strong>Created by:</strong> <%= creator %></li>
+                <li><strong>Created on:</strong> <%= created_date %></li>
+                <li><strong>Due on:</strong> <%= due_date %></li>
+                <li><strong>Status:</strong> <%= status %></li>
+            </ul>
+            <a class="show-hide-list" href="#">Show more <i class="icon-chevron-down"></i></a>
+        </div>
+    </div>
+</script>
+
+<script type="text/template" id="swimlane-template">
+    <div class="tickets">
+        <div class="monday day day-1" data-date="<%= moment().utc().day(date_base + 1).format('YYYY-MM-DD') %>">
+            <div class="background">Monday</div>
+        </div>
+        <div class="tuesday day day-2" data-date="<%= moment().utc().day(date_base + 2).format('YYYY-MM-DD') %>">
+            <div class="background">Tuesday</div>
+        </div>
+        <div class="wednesday day day-3" data-date="<%= moment().utc().day(date_base + 3).format('YYYY-MM-DD') %>">
+            <div class="background">Wednesday</div>
+        </div>
+        <div class="thursday day day-4" data-date="<%= moment().utc().day(date_base + 4).format('YYYY-MM-DD') %>">
+            <div class="background">Thursday</div>
+        </div>
+        <div class="friday day day-5" data-date="<%= moment().utc().day(date_base + 5).format('YYYY-MM-DD') %>">
+            <div class="background">Friday</div>
+        </div>
+        <div class="next-week">
+            <div class="background">Next week</div>
+        </div>
+    </div>
+</script>
+
+<!-- App files -->
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery-ui.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/moment.js') }}"></script>
+<script src="{{ url_for('static', filename='js/underscore-min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/backbone-min.js') }}"></script>
+<script src="{{ url_for('static', filename='bootstrap/js/bootstrap.js') }}"></script>
+
+<script type="text/javascript">
+    var config = {
+        {% if swimmers %}
+        swimmers: [
+            {% for email in swimmers %}
+            "{{ email }}",
+            {% endfor %}
+        ]
+        {% endif %}
+    };
+</script>
+<script src="{{ url_for('static', filename="js/app.js") }}"></script>
+
+</body>
+
+</html>
