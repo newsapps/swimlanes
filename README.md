@@ -14,7 +14,7 @@ It grabs information about your team's tasks for the current week from Unfuddle 
 
 Clone the repository:
 
-    $ git clone git@github.com:newsapps/swimlanes.git
+    $ git clone git://github.com/newsapps/swimlanes.git 
     $ cd swimlanes
 
 Optionally create a virtualenv:
