@@ -69,9 +69,37 @@
     font-size: 14px;
     margin: 8px;
     overflow: hidden;
+    position: relative;
     -webkit-box-shadow: 1px 1px 4px rgba(50, 50, 50, 0.25);
     -moz-box-shadow: 1px 1px 4px rgba(50, 50, 50, 0.25);
     box-shadow: 1px 1px 4px rgba(50, 50, 50, 0.25);
+}
+
+.ticket .status-indicator {
+    position: absolute;
+    display: block;
+    border: 1px solid #555555;
+    width: 8px;
+    height: 8px;
+    right: 8px;
+    bottom: 8px;
+
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+.ticket .status-indicator.reassigned,
+.ticket .status-indicator.new {
+    display: none;
+}
+.ticket .status-indicator.accepted {
+    background: #1514fc;
+}
+.ticket .status-indicator.resolved {
+    background: #fefe14;
+}
+.ticket .status-indicator.closed {
+    background: #008000;
 }
 
 .ticket .ticket-details-inner {

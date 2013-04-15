@@ -38,9 +38,9 @@ def save_ticket(id):
 @app.route('/tickets')
 def get_tickets():
     last_week = unfuddle.get_ticket_report(
-        {"conditions_string": "due_on-eq-last_7_days,status-neq-closed"})
+        {"conditions_string": "due_on-eq-last_7_days"})
     next_month = unfuddle.get_ticket_report(
-        {"conditions_string": "due_on-eq-next_30_days,status-neq-closed"})
+        {"conditions_string": "due_on-eq-next_30_days"})
 
     tickets = last_week['groups'][0]['tickets'] + \
         next_month['groups'][0]['tickets']
