@@ -1,7 +1,7 @@
 (function() {
-    // Models
     var swimlanes = {}, people, tickets, projects, milestones, authboard;
 
+    // Models & Collections
     swimlanes.Collection = Backbone.Collection.extend({
         get_by_id: function(id) {
             return this._byId[id];
@@ -158,8 +158,21 @@
             var markup = $('<div id="status" class="alert ' + type + '">' + message +
                 '<a class="close" data-dismiss="alert" href="#">&times;</a></div>');
 
-            this.$el.prepend(markup);
+            $('body').prepend(markup);
             markup.fadeIn();
+        },
+
+        changed: function() {
+            var needs_save = false;
+
+            _.each(this.swimlanes, _.bind(function(v, i) {
+                v.tickets.each(_.bind(function(v, i) {
+                    if ( v.hasChanged() )
+                        needs_save = true;
+                }, this));
+            }, this));
+
+            return needs_save;
         },
 
         save: function() {
@@ -169,9 +182,6 @@
                 v.tickets.each(_.bind(function(v, i) {
                     if ( v.hasChanged() ) {
                         v.save({}, {
-                            success: _.bind(function(model, data) {
-                                model.set(data);
-                            }, this),
                             error: _.bind(function() {
                                 error = true;
                             }, this)
@@ -181,7 +191,7 @@
             }, this));
 
             if ( !error )
-                this.display_message('Success', 'success');
+                this.display_message('Success saved changes.', 'success');
             else
                 this.display_message('Error', 'error');
 
@@ -503,12 +513,18 @@
             },
 
             home: function() {
+                if ( authboard && authboard.changed() )
+                    authboard.save();
+
                 this.authboard_params.container.empty();
 
                 authboard = new AuthBoard(this.authboard_params);
             },
 
             future: function() {
+                if ( authboard && authboard.changed() )
+                    authboard.save();
+
                 this.authboard_params.container.empty();
 
                 var params = _.extend({
@@ -521,6 +537,13 @@
 
         new router();
         Backbone.history.start();
+
+        // Check for unsaved changes and warn the user before
+        // reloading or leaving the page
+        $(window).bind('beforeunload', function() {
+            if ( authboard.changed() )
+                return "There are unsaved changes.";
+        });
 
     });
 })();

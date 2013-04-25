@@ -43,3 +43,11 @@ Run lib/update.py to fetch the less volatile Unfuddle data (i.e. projects, miles
 Run the server and visit in your browser:
 
     $ python runserver.py
+
+# Task status indicators
+
+Depending on its status, a small circle appear in the lower right corner of a story card. These circles indicate the ticket's current Unfuddle status and provide a way to gauge your team's progress on this week's tasks at a glance.
+
+- Blue: the task has been "accepted" and is in progress.
+- Yellow: the task is "resolved" -- finished but waiting for feedback or deployment
+- Green: the task is "closed" -- finished, committed, deployed

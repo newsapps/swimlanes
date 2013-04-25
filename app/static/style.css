@@ -88,6 +88,8 @@
     -moz-border-radius: 20px;
     border-radius: 20px;
 }
+.ticket .status-indicator.unaccepted,
+.ticket .status-indicator.reopened,
 .ticket .status-indicator.reassigned,
 .ticket .status-indicator.new {
     display: none;
